@@ -5,7 +5,6 @@ project(empca)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake-modules)
 
 find_package(Threads REQUIRED)
-#find_package(PCAP REQUIRED)
 find_package(LIBVIRT REQUIRED)
 find_package(LIBGUESTFS REQUIRED)
 if(${LIBGUESTFS_VERSION} LESS 1.25.31)
