@@ -1,0 +1,66 @@
+{
+   "StartVm": {
+      "Path": "/home/EMPCA/test.xml",
+      "PreScript": "/home/EMPCA/test.sh",
+      "PostScript": null,
+      "IPAddress": 3232235540
+   },
+   "OtherVms": [
+      {
+         "Path": "/home/EMPCA/webserver.xml",
+         "AlwaysOn": true,
+         "IPAddress": 3232235621
+      },
+      {
+         "Path": "/home/EMPCA/nas.xml",
+         "AlwaysOn": true,
+         "IPAddress": 3232235620
+      },
+      {
+         "Path": "/home/EMPCA/mailserver.xml",
+         "AlwaysOn": false,
+         "IPAddress": 2370571779
+      }
+   ],
+   "Standardtemplate": {
+      "Path": "/home/EMPCA/test.img",
+      "Format": "qcow2"
+   },
+   "Bridge": {
+      "Name": "br0",
+      "Destroy": true
+   },
+   "Filter": [
+      {
+         "Rule": 1,
+         "Action": "STARTVM",
+         "ActionParam": "mailserver"
+      },
+      {
+         "Rule": 2,
+         "Action": "DROP",
+         "ActionParam": null
+      },
+      {
+         "Rule": 3,
+         "Action": "RUNSCRIPT",
+         "ActionParam": "/Path/to/script.sh"
+      },
+      {
+         "Rule": 4,
+         "Action": "FREEZESRC",
+         "ActionParam": null
+      },
+      {
+         "Rule": 5,
+         "Action": "FREEZEALL",
+         "ActionParam": null
+      }
+   ],
+   "MaxRuntime": 60,
+   "DHCP": {
+      "HostsDir": "/home/EMPCA/hosts/",
+      "PidFile": "/var/run/dnsmasq/dnsmasq.pid",
+      "IPAddress": 3232235600
+   }
+}
